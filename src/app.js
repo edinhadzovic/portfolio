@@ -1,7 +1,9 @@
+import yaml from './data.yaml';
+
 function component() {
   const el = document.createElement("div");
 
-  el.innerHTML = ["hello", "webpack"].join(" ");
+  el.innerHTML = yaml.title;
 
   return el;
 }

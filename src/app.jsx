@@ -10,20 +10,40 @@ const Title = styled.h1`
 `;
 
 const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
+  display: inline-flex;
+  flex-direction: row;
+`
+
+const Section = styled.section`
+  height: ${document.documentElement.clientHeight - document.documentElement.}px;
+  width: ${document.documentElement.clientWidth}px;
+  background-color: #00296B;
 `
 
 
 const SimpleComponent = () => {
   return (
     <Wrapper>
-      <Title>{yaml.title}</Title>
+      <Section>
+        <Title>{yaml.title}</Title>
+      </Section>
+      <Section>
+        <Title>{yaml.title}</Title>
+      </Section>
+      <Section>
+        <Title>{yaml.title}</Title>
+      </Section>
+      <Section>
+        <Title>{yaml.title}</Title>
+      </Section>
+      <Section>
+        <Title>{yaml.title}</Title>
+      </Section>
     </Wrapper>
   )
 }
 
 ReactDom.render(
   <SimpleComponent />,
-  document.getElementsByTagName("body")[0]
+  document.getElementsByTagName("body")[0],
 )

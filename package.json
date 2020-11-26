@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "live": "",
-    "production": "webpack && serve dist"
+    "production": "webpack && serve dist",
+    "serve": "serve dist"
   },
   "author": "Edin Hadzovic",
   "license": "ISC",

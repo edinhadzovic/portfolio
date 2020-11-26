@@ -3,3 +3,9 @@ bio:
   name: Edin Hadzovic
   bio: Full Stack Developer with 7 years expirience in developing SaaS, Node Modules, Web Apps and Mobile Apps.
   dob: 08.08.1991
+  developer: Full Stack Developer
+tagline:
+  first:
+    title: I design and develop
+    sections: [mobile apps, websites, REST API, SaaS, Node Modules, and more]
+

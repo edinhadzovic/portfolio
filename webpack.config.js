@@ -14,8 +14,14 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Edin Hadzovic | Full-Stack Developer | Portfolio',
+      cache: false,
+      template: './src/app.page.ejs'
     }),
   ],
+  watch: true,
+  watchOptions: {
+    poll: 1000
+  },
   module: {
     rules: [
       {
@@ -33,5 +39,8 @@ module.exports = {
         }
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
 };

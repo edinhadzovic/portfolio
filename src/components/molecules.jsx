@@ -3,10 +3,17 @@ import { SubTitle, Mark } from './atoms';
 
 export const Change = (props) => {
     let forward, backward;
+    let container = React.useRef();
     const [skill, setSkill] = React.useState('');
     const [left, setLeft] = React.useState(0);
     const [finished, setFinish] = React.useState(false);
     const [index, setIndex] = React.useState(0);
+
+    const reset = () => {
+        setSkill('');
+        setLeft(0);
+        setFinish(false);
+    }
 
     const forwardInterval = () => {
         if (props.skills[index].length === skill.length) {
@@ -16,30 +23,28 @@ export const Change = (props) => {
         }
 
         let join = skill + props.skills[index][skill.length];
-        console.log(join);
         setSkill(join)
-        setLeft(join.length * 15);
+        setLeft(container.current.clientWidth);
     }
 
     const backwardInterval = () => {
         if (skill.length === 0) {
+            reset();
+            setIndex(index === props.skills.length - 1 ? 0 : index + 1);
             clearInterval(backward);
-            setFinish(false);
-            setIndex(index === props.skills.length ? 0 : index + 1);
-            forward = setInterval(forwardInterval, 300);
             return;
         }
 
         let rmstr = skill.slice(0, -1);
         setSkill(rmstr);
-        setLeft(rmstr.length * 15);
+        setLeft(container.current.clientWidth);
     }
 
     React.useEffect(() => {
-        forward = setInterval(forwardInterval, 300);
+        forward = setInterval(forwardInterval, 200);
 
         if(finished) {
-            backward = setInterval(backwardInterval, 200)
+            backward = setInterval(backwardInterval, 100)
         }
 
         return () => {
@@ -49,6 +54,6 @@ export const Change = (props) => {
     })
 
     return (
-        <SubTitle>{skill} <Mark left={left} finished={finished}/></SubTitle>
+        <SubTitle ref={container}>{skill} <Mark left={left} finished={finished}/></SubTitle>
     );
 }
